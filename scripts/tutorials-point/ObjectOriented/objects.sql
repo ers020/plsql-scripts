@@ -57,8 +57,24 @@
     Width: 44
 
     Inheritance for PL/SQL Objects
+        PL/SQL allows creating object from the existing base objects. To implement inheritance,
+        the base objects should be declared as NOT FINAL. The default is FINAL.
+
+    The following code for Inheritance will printout:
+    Length: 20
+    Width: 10
+    Material: Wood
+    Length: 50
+    Width: 30
+    Material: Steel
 
 
+    Abstract Objects in PL/SQL
+        The NOT INSTANTIABLE clause allows you to declare an abstract object. You cannot use an
+        abstract object as it is; you will have to create a subtype or child type of such objects
+        to use its functionalities.
+
+    Example of Abstract creation below.
 
 */
 -- Instantiating an Object
@@ -181,3 +197,63 @@ BEGIN
     END IF;
 END;
 /
+
+
+-- Inheritance
+    -- create main object
+CREATE OR REPLACE TYPE rectangle AS OBJECT
+    (length number,
+     width number,
+     member function enlarge( inc number) return rectangle,
+     NOT FINAL member procedure display) NOT FINAL
+/
+
+CREATE OR REPLACE TYPE BODY rectangle AS
+    MEMBER FUNCTION enlarge(inc number) return rectangle IS
+    BEGIN
+        return rectangle(self.length + inc, self.width + inc);
+    END enlarge;
+    MEMBER PROCEDURE display IS
+    BEGIN
+      dbms_output.put_line('Length: '|| length);
+      dbms_output.put_line('Width: '|| width);
+    END display;
+END;
+/
+    -- create child object
+CREATE OR REPLACE TYPE tabletop UNDER rectangle
+(
+   material varchar2(20),
+   OVERRIDING member procedure display
+)
+/
+
+CREATE OR REPLACE TYPE BODY tabletop AS
+OVERRIDING MEMBER PROCEDURE display IS
+BEGIN
+   dbms_output.put_line('Length: '|| length);
+   dbms_output.put_line('Width: '|| width);
+   dbms_output.put_line('Material: '|| material);
+END display;
+/
+
+    -- call objects
+DECLARE
+    t1 tabletop;
+    t2 tabletop;
+BEGIN
+    t1:= tabletop(20, 10, 'Wood');
+    t2 := tabletop(50, 30, 'Steel');
+    t1.display;
+    t2.display;
+END;
+/
+
+
+CREATE OR REPLACE TYPE rectangle AS OBJECT
+(length number,
+ width number,
+ NOT INSTANTIABLE NOT FINAL MEMBER PROCEDURE display)
+ NOT INSTANTIABLE NOT FINAL
+/
+
