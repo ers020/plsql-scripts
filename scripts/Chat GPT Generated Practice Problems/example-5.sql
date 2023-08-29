@@ -10,6 +10,7 @@ ALTER TABLE employee
     ADD last_modified TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL;
 
 -- Step 2: create trigger
+SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE TRIGGER update_last_modified
     BEFORE UPDATE OF salary ON employee

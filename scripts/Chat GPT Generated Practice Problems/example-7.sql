@@ -17,6 +17,8 @@ insert into account_table values (2, 300);
 commit;
 
 -- Step 2: create block
+SET SERVEROUTPUT ON;
+
 DECLARE
     from_acc number := 1;
     to_acc number := 2;

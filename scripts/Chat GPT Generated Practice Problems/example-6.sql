@@ -7,6 +7,8 @@
 */
 
 -- Step 1 make a department table : weird make to play with the summing.
+SET SERVEROUTPUT ON;
+
 CREATE TABLE DEPARTMENT (
                             NAME VARCHAR2(1000) PRIMARY KEY,
                             DEPARTMENT_ID NUMBER,
