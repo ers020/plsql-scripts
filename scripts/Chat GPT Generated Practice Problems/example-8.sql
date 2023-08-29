@@ -30,9 +30,9 @@ DECLARE
         select employee_id, first_name, last_name
         from employee;
     TYPE EmployeeRecord IS RECORD (
-        id employee.employee_id%type,
-        f_name employee.first_name%type,
-        l_name employee.last_name%type
+        id      employee.employee_id%type,
+        f_name  employee.first_name%type,
+        l_name  employee.last_name%type
     );
     emp_rec EmployeeRecord;
 BEGIN
