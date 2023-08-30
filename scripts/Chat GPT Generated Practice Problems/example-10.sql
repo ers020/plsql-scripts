@@ -8,10 +8,10 @@
 
 -- Step 1: Update department table
 ALTER TABLE department
-ADD COLUMN location varchar(200);
+    ADD COLUMN location varchar(200);
 
 UPDATE department
-SET location = 'Here';
+    SET location = 'Here';
 
 commit;
 
