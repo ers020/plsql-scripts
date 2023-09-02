@@ -1,0 +1,6 @@
+To reproduce this project, please run the following:
+
+
+1 Tables -> tables.sql
+
+2 Triggers -> triggers.sql
