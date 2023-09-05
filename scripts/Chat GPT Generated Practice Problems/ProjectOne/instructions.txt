@@ -4,3 +4,5 @@ To reproduce this project, please run the following:
 1 Tables -> tables.sql
 
 2 Triggers -> triggers.sql
+
+3 Functions and Packages -> functions-packages.sql
