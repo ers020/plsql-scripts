@@ -1,0 +1,13 @@
+Run files in the following order:
+
+1) Tables Folder
+    - run tables.sql
+    - run data.sql for DEPARTMENT Table
+
+2) Triggers
+
+3) Functions and Packages
+
+4) Procedures and Reporting
+
+5) Advanced Features
